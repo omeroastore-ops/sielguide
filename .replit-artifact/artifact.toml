@@ -1,0 +1,27 @@
+kind = "mobile"
+previewPath = "/"
+title = "SielGuide"
+version = "1.0.0"
+id = "artifacts/sielguide"
+router = "expo-domain"
+
+[[integratedSkills]]
+name = "expo"
+version = "1.0.0"
+
+[[services]]
+ensurePreviewReachable = "/status"
+name = "expo"
+paths = [ "/" ]
+localPort = 18433
+
+[services.development]
+run = "pnpm --filter @workspace/sielguide run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/sielguide", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/sielguide", "run", "serve" ]
+
+[services.env]
+PORT = "18433"
+BASE_PATH = "/"
